@@ -31,7 +31,7 @@ def load_csv(csvpath):
 
 
 
-def save_csv(output_path):
+def save_csv(output_path, qualifying_loans):
     
     """Saves the qualifying loans to a CSV file.
 
@@ -41,13 +41,13 @@ def save_csv(output_path):
     Returns:
         exports qualifying loans to csv file
     """
-    
-    #making a header for the CSV file
+   
+    # making a header for CSV file
     header = ["Institution", "Max Loan", "Max LTV", "Max DTI", "Min Credit Score", "Interest Rate"]
-
-    #using a with-open function to write data from for-loop into new CSV file
+    
+    # using a with-open function to write qualifying data into new CSV file
     with open(output_path, 'w') as csvfile: 
         csvwriter = csv.writer(csvfile, delimiter=",")
         csvwriter.writerow(header)
-        for row in csvwriter:
-            csvwriter.writerow(row)
+        for loan in qualifying_loans:
+            csvwriter.writerow(loan)
