@@ -9,6 +9,7 @@ import sys
 import fire
 import questionary
 from pathlib import Path
+import csv
 
 from qualifier.utils.fileio import load_csv
 
@@ -106,9 +107,23 @@ def save_qualifying_loans(qualifying_loans):
 
     Args:
         qualifying_loans (list of lists): The qualifying bank loans.
+
+    Returns:
+        exports qualifying loans to csv file
     """
-    # @TODO: Complete the usability dialog for savings the CSV Files.
-    # YOUR CODE HERE!
+    
+    #making a header for the CSV file
+    header = ["Institution", "Max Loan", "Max LTV", "Max DTI", "Min Credit Score", "Interest Rate"]
+
+    #creating a path for CSV file
+    output_path = Path("qualifying_loans.csv")
+
+    #using a with-open function to write data from for-loop into new CSV file
+    with open(output_path, 'w') as csvfile: 
+        csvwriter = csv.writer(csvfile, delimiter=",")
+        csvwriter.writerow(header)
+        for loan in qualifying_loans:
+            csvwriter.writerow(loan)
 
 
 def run():
