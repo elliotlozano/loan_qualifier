@@ -46,6 +46,7 @@ Upon launching the loan qualifier application you will be greeted with the follo
 ## Contributors
 
 Elliot Lozano
+Texas A&M University '19
 
 ---
 
