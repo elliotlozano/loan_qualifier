@@ -52,4 +52,4 @@ def save_csv(output_path, qualifying_loans):
         for loan in qualifying_loans:
             csvwriter.writerow(loan)
 
-    print(f"Your custom list of loans are saved to a CSV file! You can find the file at: {output_path}")
+    print(f"Your custom list of loans is saved to a CSV file! You can find the file at: {output_path}")
