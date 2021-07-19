@@ -1,6 +1,6 @@
 # Loan Qualifier Application
 
-This is a python command-line interface application that allows users to see qualifying loans from lenders quickly and easily. The application works by taking in a `daily_rate_sheet` of loan criteria from various loan providers, asks the user a number of questions to evaluate their loan eligibility, and then returns to them a list of qualifying loans.
+This is a python command-line interface application that allows users to see qualifying loans from lenders quickly and easily. The application works by taking in a `daily_rate_sheet` of loan criteria from various loan providers, asks the user a number of questions to evaluate their loan eligibility, and then returns to them a list of qualifying loans. The program then asks the user if they would like to save the data as a csv file.
 
 ---
 
@@ -41,12 +41,17 @@ Upon launching the loan qualifier application you will be greeted with the follo
 
 ![Loan Qualifier Prompts](app_prompts.png)
 
+After the application filters through the bank list, you will be asked if you want to save the qualifying data as a csv file and then asked to provide a file path for export.
+
+![Loan Qualifier Export Data](save_csv_file.png)
+
+You can access your filtered bank data by navigating to the folder you provided when saving the data.
+
 ---
 
 ## Contributors
 
-Elliot Lozano
-Texas A&M University '19
+Elliot Lozano, Texas A&M University '19
 
 ---
 
