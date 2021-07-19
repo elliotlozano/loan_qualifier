@@ -108,7 +108,7 @@ def find_qualifying_loans(bank_data, credit_score, debt, income, loan, home_valu
 
 def save_qualifying_loans(qualifying_loans):
 
-    # Use if-else statement to determine if user has ability to save qualifying data
+    # Use if-else statement to determine if user has ability to save qualifying data.
     if len(qualifying_loans) > 0.0:
         # Use questionary to ask if user would like to save data
         questionary.confirm("Do you want to save your qualifying loans?").ask()
