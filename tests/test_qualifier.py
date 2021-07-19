@@ -35,5 +35,4 @@ def test_filters():
 
     loan_to_value_ratio = 0.84
 
-    # @TODO: Test the new save_csv code!
-    # YOUR CODE HERE!
+    # save_csv = fileio.save_csv(Path('./data/output/qualifying_loans.csv'))
