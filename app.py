@@ -30,9 +30,12 @@ def load_bank_data():
     Returns:
         The bank data from the data rate sheet CSV file.
     """
-
+    
+    # Use questionary to ask for file path to bank data sheet
     csvpath = questionary.text("Enter a file path to a rate-sheet (.csv):").ask()
     csvpath = Path(csvpath)
+    
+    # Create conditional that notifies user about incorrect file path and exits system
     if not csvpath.exists():
         sys.exit(f"Oops! Can't find this path: {csvpath}")
 
@@ -45,13 +48,14 @@ def get_applicant_info():
     Returns:
         Returns the applicant's financial information.
     """
-
+    # Use quetionary to ask user for their financial information
     credit_score = questionary.text("What's your credit score?").ask()
     debt = questionary.text("What's your current amount of monthly debt?").ask()
     income = questionary.text("What's your total monthly income?").ask()
     loan_amount = questionary.text("What's your desired loan amount?").ask()
     home_value = questionary.text("What's your home value?").ask()
 
+    # Assign inputs from user information to an expected variable class
     credit_score = int(credit_score)
     debt = float(debt)
     income = float(income)
@@ -104,10 +108,10 @@ def find_qualifying_loans(bank_data, credit_score, debt, income, loan, home_valu
 
 def save_qualifying_loans(qualifying_loans):
 
-    # using questionary to ask if user would like to save data
+    # Use questionary to ask if user would like to save data
     questionary.confirm("Do you want to save your qualifying loans?").ask()
 
-    # asking user to create an output path to export qualifying loan data
+    # Ask user to create an output path to export qualifying loan data
     output_path = questionary.text("Enter a file path to save qualifying loans (.csv):").ask()
     output_path = Path(output_path)
 
