@@ -108,12 +108,20 @@ def find_qualifying_loans(bank_data, credit_score, debt, income, loan, home_valu
 
 def save_qualifying_loans(qualifying_loans):
 
-    # Use questionary to ask if user would like to save data
-    questionary.confirm("Do you want to save your qualifying loans?").ask()
+    # Use if-else statement to determine if user has ability to save qualifying data
+    if len(qualifying_loans) > 0.0:
+        # Use questionary to ask if user would like to save data
+        questionary.confirm("Do you want to save your qualifying loans?").ask()
+    else:
+        sys.exit("There are no qualifying loans!")
 
     # Ask user to create an output path to export qualifying loan data
     output_path = questionary.text("Enter a file path to save qualifying loans (.csv):").ask()
     output_path = Path(output_path)
+    
+    # Create conditional that notifies user about incorrect file path and exits system
+    if not output_path.exists():
+        sys.exit(f"Oops! Can't find this path: {output_path}")
 
     return save_csv(output_path, qualifying_loans)
 
