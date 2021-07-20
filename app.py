@@ -118,10 +118,6 @@ def save_qualifying_loans(qualifying_loans):
     # Ask user to create an output path to export qualifying loan data
     output_path = questionary.text("Enter a file path to save qualifying loans (.csv):").ask()
     output_path = Path(output_path)
-    
-    # Create conditional that notifies user about incorrect file path and exits system
-    if not output_path.exists():
-        sys.exit(f"Oops! Can't find this path: {output_path}")
 
     return save_csv(output_path, qualifying_loans)
 
