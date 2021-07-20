@@ -10,6 +10,8 @@ import fire
 import questionary
 from pathlib import Path
 
+from questionary.constants import YES
+
 from qualifier.utils.fileio import load_csv
 from qualifier.utils.fileio import save_csv
 
@@ -111,13 +113,16 @@ def save_qualifying_loans(qualifying_loans):
     # Use if-else statement to determine if user has ability to save qualifying data.
     if len(qualifying_loans) > 0.0:
         # Use questionary to ask if user would like to save data
-        questionary.confirm("Do you want to save your qualifying loans?").ask()
+        answer = questionary.confirm("Do you want to save your qualifying loans?").ask()
+        if not answer:
+            # Application closes if they choose not to save data
+            sys.exit("You chose to exit without saving your loans! Have a good day!")
+        else: 
+            # Ask user to create an output path to export qualifying loan data
+            output_path = questionary.text("Enter a file path to save qualifying loans (.csv):").ask()
+            output_path = Path(output_path)
     else:
         sys.exit("There are no qualifying loans!")
-
-    # Ask user to create an output path to export qualifying loan data
-    output_path = questionary.text("Enter a file path to save qualifying loans (.csv):").ask()
-    output_path = Path(output_path)
 
     return save_csv(output_path, qualifying_loans)
 
